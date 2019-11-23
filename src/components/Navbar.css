@@ -1,0 +1,71 @@
+.navigation {
+  width: 100%;
+  height: 80px;
+  background: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.navigation .logo {
+  margin-left: 25px;
+}
+
+.fraction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 80px;
+}
+
+.fraction .fraction-input,
+.fraction .fraction-control,
+.fraction .fraction-control-top,
+.fraction .fraction-control-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fraction .fractionInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #8190fc;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.fraction .fractionDivider {
+  width: 100%;
+  height: 3px;
+  background: #8190fc;
+}
+
+.fraction .fraction-control .fraction-control-button {
+  width: 13px;
+  height: 13px;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.fraction .fraction-control .fraction-control-top {
+  margin-bottom: 3px;
+}
+.fraction .fraction-control .fraction-control-bottom {
+  margin-top: 3px;
+}
+
+.fraction .fraction-control .fraction-control-button-up {
+  background: url("../assets/up.svg") no-repeat;
+}
+.fraction .fraction-control .fraction-control-button-down {
+  background: url("../assets/down.svg") no-repeat;
+}

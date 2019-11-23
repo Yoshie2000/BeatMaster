@@ -1,0 +1,24 @@
+.builder {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.builder-table {
+  border-spacing: 10px;
+  border-collapse: separate;
+}
+
+.builder-table td {
+  border-radius: 15px;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+
+  background-image: linear-gradient(135deg, #8190fc, #b386ea);
+
+  cursor: pointer;
+  text-align: center;
+}

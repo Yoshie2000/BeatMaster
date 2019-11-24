@@ -11,12 +11,24 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     this.resizeBPMInput();
+    this.resizeBeatCountInput();
+  }
+
+  componentDidUpdate() {
+    this.resizeBPMInput();
+    this.resizeBeatCountInput();
   }
 
   resizeBPMInput() {
     let newSize = document.getElementById("bpmInput").value.length;
     newSize = newSize < 1 ? 1 : newSize;
     document.getElementById("bpmInput").style.width = (newSize * 13.33333) + "px";
+  }
+
+  resizeBeatCountInput() {
+    let newSize = document.getElementById("beatCountInput").value.length;
+    newSize = newSize < 1 ? 1 : newSize;
+    document.getElementById("beatCountInput").style.width = (newSize * 13.33333) + "px";
   }
 
   render() {
@@ -32,7 +44,7 @@ class Navbar extends React.Component {
             <span className="fractionDivider"></span>
             <input type="number" id="bottomNumberInput" className="fractionInput" value={this.props.fractionBottom} readOnly />
           </div>
-          <div className="fraction-control">
+          <div className="fraction-control-container">
             <div className="fraction-control-top">
               <button
                 className="fraction-control-button fraction-control-button-up"
@@ -61,8 +73,25 @@ class Navbar extends React.Component {
           id="bpmInput"
           className="input"
           defaultValue={this.props.bpm}
-          onChange={() => { this.resizeBPMInput(); this.props.updateBPM(document.getElementById("bpmInput").value) }} />
+          onChange={() => this.props.updateBPM(document.getElementById("bpmInput").value)} />
         <p className="text">BPM</p>
+
+        <input
+          type="number"
+          id="beatCountInput"
+          className="input"
+          value={this.props.beatCount}
+          onChange={() => this.props.updateBeatCount(document.getElementById("beatCountInput").value)} />
+        <div className="fraction-control">
+          <button
+            className="fraction-control-button fraction-control-button-up"
+            onClick={() => this.props.updateBeatCount(this.props.beatCount + 1)}>
+          </button>
+          <button
+            className="fraction-control-button fraction-control-button-down"
+            onClick={() => this.props.updateBeatCount(this.props.beatCount - 1)}>
+          </button>
+        </div>
 
       </nav>
     );

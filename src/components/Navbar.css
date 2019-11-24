@@ -20,17 +20,18 @@
   height: 80px;
 }
 
-.fraction .fraction-input,
-.fraction .fraction-control,
-.fraction .fraction-control-top,
-.fraction .fraction-control-bottom {
+.fraction-input,
+.fraction-control-container,
+.fraction-control-top,
+.fraction-control-bottom,
+.fraction-control {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.fraction .fractionInput {
+.fractionInput {
   background: transparent;
   border: none;
   outline: none;
@@ -41,13 +42,13 @@
   font-weight: 700;
 }
 
-.fraction .fractionDivider {
+.fractionDivider {
   width: 100%;
   height: 3px;
   background: #8190fc;
 }
 
-.fraction .fraction-control .fraction-control-button {
+.fraction-control-button {
   width: 13px;
   height: 13px;
   border: none;
@@ -56,16 +57,21 @@
   cursor: pointer;
 }
 
-.fraction .fraction-control .fraction-control-top {
+.fraction-control-top {
   margin-bottom: 3px;
 }
-.fraction .fraction-control .fraction-control-bottom {
+.fraction-control-bottom {
   margin-top: 3px;
 }
 
-.fraction .fraction-control .fraction-control-button-up {
+.fraction-control-button-up {
   background: url("../assets/up.svg") no-repeat;
 }
-.fraction .fraction-control .fraction-control-button-down {
+.fraction-control-button-down {
   background: url("../assets/down.svg") no-repeat;
+}
+
+.fraction-control {
+  margin-left: 10px;
+  margin-top: 5px;
 }

@@ -1,12 +1,19 @@
 .builder {
-  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 80px;
+  width: 100vw;
   height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .builder-table {
+  position: absolute;
+  top: 0;
   border-spacing: 10px;
   border-collapse: separate;
 }
@@ -14,11 +21,16 @@
 .builder-table td {
   border-radius: 15px;
   margin: 10px;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
 
-  background-image: linear-gradient(135deg, #8190fc, #b386ea);
+  background-color: #8190fc;
+  filter: brightness(25%);
 
   cursor: pointer;
   text-align: center;
+}
+
+.builder-table td.active {
+  filter: brightness(100%);
 }

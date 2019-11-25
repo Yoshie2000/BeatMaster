@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/beat-master/static/css/main.adcaafa6.chunk.css",
+    "main.js": "/beat-master/static/js/main.72eb4b7f.chunk.js",
+    "main.js.map": "/beat-master/static/js/main.72eb4b7f.chunk.js.map",
+    "runtime-main.js": "/beat-master/static/js/runtime-main.edb67021.js",
+    "runtime-main.js.map": "/beat-master/static/js/runtime-main.edb67021.js.map",
+    "static/js/2.2b665d2d.chunk.js": "/beat-master/static/js/2.2b665d2d.chunk.js",
+    "static/js/2.2b665d2d.chunk.js.map": "/beat-master/static/js/2.2b665d2d.chunk.js.map",
+    "index.html": "/beat-master/index.html",
+    "precache-manifest.23a4e7235d75e63d227ef6af1631cd63.js": "/beat-master/precache-manifest.23a4e7235d75e63d227ef6af1631cd63.js",
+    "service-worker.js": "/beat-master/service-worker.js",
+    "static/css/main.adcaafa6.chunk.css.map": "/beat-master/static/css/main.adcaafa6.chunk.css.map",
+    "static/media/beep_1.wav": "/beat-master/static/media/beep_1.092f33a7.wav",
+    "static/media/beep_2.wav": "/beat-master/static/media/beep_2.3d3e5804.wav",
+    "static/media/beep_3.wav": "/beat-master/static/media/beep_3.846642c7.wav",
+    "static/media/click_1.wav": "/beat-master/static/media/click_1.d016c945.wav",
+    "static/media/click_2.wav": "/beat-master/static/media/click_2.de4f0a1b.wav",
+    "static/media/click_3.wav": "/beat-master/static/media/click_3.fcad0ff5.wav",
+    "static/media/ding_1.wav": "/beat-master/static/media/ding_1.ee3e466b.wav",
+    "static/media/Navbar.css": "/beat-master/static/media/up.ea14bced.svg",
+    "static/media/tom_1.wav": "/beat-master/static/media/tom_1.6561a0f4.wav"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.edb67021.js",
+    "static/js/2.2b665d2d.chunk.js",
+    "static/css/main.adcaafa6.chunk.css",
+    "static/js/main.72eb4b7f.chunk.js"
+  ]
+}

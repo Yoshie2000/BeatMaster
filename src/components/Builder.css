@@ -11,6 +11,7 @@
 .builder-table {
   border-spacing: 10px;
   border-collapse: separate;
+  position: relative;
 }
 
 .builder-table td {
@@ -27,4 +28,21 @@
 
 .builder-table td.active {
   background-color: #8190fc;
+}
+
+.builder-table tbody tr th {
+  min-width: 100px !important;
+  width: 100px !important;
+  max-width: 100px !important;
+}
+
+#metronome-bar {
+  width: 5px;
+  height: calc(100% - 60px);
+  background-color: #2ecc71;
+  position: absolute;
+  left: 117px;
+  top: 40px;
+  z-index: 0;
+  border-radius: 5px;
 }

@@ -82,6 +82,7 @@ class Builder extends React.Component {
           <tbody>
             {rows}
           </tbody>
+          <span id="metronome-bar"></span>
         </table>
       </div>
     );

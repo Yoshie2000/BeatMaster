@@ -53,7 +53,8 @@ class App extends React.Component {
       beatData: beatData,
       sounds: sounds,
       beatCount: beatCount,
-      mouseDown: false
+      mouseDown: false,
+      interval: null
     };
     this.updateTimeSignature = this.updateTimeSignature.bind(this);
     this.updateBPM = this.updateBPM.bind(this);
@@ -63,29 +64,53 @@ class App extends React.Component {
   }
 
   startMetronome() {
-    let beatIndex = 0;
+    let timerSpeed = 10;
 
-    let tick = function (app) {
-      let delay = (1000 / (app.state.bpm / 60)) / app.state.beatCount;
-      if (app.state.running) {
-        let timeout = setTimeout(tick, delay, app);
-        app.timeout = timeout;
-      }
+    let app = this;
+    let beatIndex = 1;
+    let barPosition = 0;
 
-      if (beatIndex === app.state.fractionTop * app.state.beatCount) {
-        beatIndex = 0;
-      }
+    let lastDelay = (1000 / (app.state.bpm / 60)) / app.state.beatCount;
+    let passedDelay = 0;
 
-      for (let data of app.state.beatData) {
-        if (data.beats[beatIndex].active) {
-          let audio = new Audio(data.sound.audioPath);
-          audio.play();
+    let interval = setInterval(() => {
+      // Recalculate the delay in case the user changed something
+      lastDelay = (1000 / (app.state.bpm / 60)) / app.state.beatCount;
+
+      // If the metronome should tick again
+      if (passedDelay >= lastDelay) {
+
+        // Reset the beat index if necessary
+        if (beatIndex >= app.state.fractionTop * app.state.beatCount) {
+          beatIndex = 0;
         }
+
+        // Play all the sounds that are active this beat
+        for (let data of app.state.beatData) {
+          if (data.beats[beatIndex].active) {
+            let audio = new Audio(data.sound.audioPath);
+            audio.play();
+          }
+        }
+
+        beatIndex++;
+        passedDelay = 0;
+      } else {
+        // Don't update if the metronome just fired
+        passedDelay += timerSpeed;
       }
 
-      beatIndex++;
-    }
-    tick(this);
+      // Recalculate the bar position
+      let cellSize = 50 + 10;
+      barPosition = 117 + (beatIndex - 1) * cellSize + (passedDelay / lastDelay * cellSize);
+      document.getElementById("metronome-bar").style.left = `${barPosition}px`;
+      console.log(`${barPosition}px`);
+
+    }, timerSpeed);
+
+    this.setState({
+      interval: interval
+    });
   }
 
   getUpdatedBeatData(fractionTop, beatCount) {
@@ -132,15 +157,9 @@ class App extends React.Component {
   }
 
   updateBPM(bpm) {
-    let app = this;
     bpm = bpm < 1 ? 1 : bpm;
     this.setState({
       bpm: bpm
-    }, () => {
-      if (app.state.running && app.timeout) {
-        clearTimeout(app.timeout);
-        app.startMetronome();
-      }
     });
   }
 
@@ -150,6 +169,8 @@ class App extends React.Component {
     }, () => {
       if (running) {
         this.startMetronome();
+      } else {
+        clearInterval(this.state.interval);
       }
     });
   }
@@ -175,8 +196,8 @@ class App extends React.Component {
           updateBeatCount={this.updateBeatCount}
         />
         <div
-          onMouseDown={(e) => { console.log("DOWN"); this.setState({ mouseDown: true }); e.preventDefault(); }}
-          onMouseUp={(e) => { console.log("UP"); this.setState({ mouseDown: false }); e.preventDefault(); }}>
+          onMouseDown={(e) => { this.setState({ mouseDown: true }); e.preventDefault(); }}
+          onMouseUp={(e) => { this.setState({ mouseDown: false }); e.preventDefault(); }}>
           <Builder
             beatData={this.state.beatData}
             beatCount={this.state.beatCount}
@@ -185,7 +206,7 @@ class App extends React.Component {
             mouseDown={this.state.mouseDown}
           />
         </div>
-      </div>
+      </div >
     );
   }
 

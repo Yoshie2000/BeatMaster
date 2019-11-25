@@ -51,7 +51,11 @@ class Builder extends React.Component {
         let col = (
           <td
             key={`${beatData.sound.name}-${beatIndex}`}
-            onClick={() => this.toggleBeat(soundIndex, beatIndex)}
+            onMouseDown={() => this.toggleBeat(soundIndex, beatIndex)}
+            onMouseEnter={() => {
+              if (this.props.mouseDown)
+                this.toggleBeat(soundIndex, beatIndex)
+            }}
             className={beatData.beats[beatIndex].active ? "active" : ""}>
           </td>
         );

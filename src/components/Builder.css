@@ -1,19 +1,14 @@
 .builder {
-  position: absolute;
-  left: 0;
-  top: 80px;
   width: 100vw;
   height: calc(100vh - 80px);
   max-height: calc(100vh - 80px);
   overflow: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .builder-table {
-  position: absolute;
-  top: 0;
   border-spacing: 10px;
   border-collapse: separate;
 }
@@ -24,13 +19,12 @@
   width: 50px;
   height: 50px;
 
-  background-color: #8190fc;
-  filter: brightness(25%);
+  background-color: #2c3e50;
 
   cursor: pointer;
   text-align: center;
 }
 
 .builder-table td.active {
-  filter: brightness(100%);
+  background-color: #8190fc;
 }

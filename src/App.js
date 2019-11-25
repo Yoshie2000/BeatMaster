@@ -52,7 +52,8 @@ class App extends React.Component {
       running: false,
       beatData: beatData,
       sounds: sounds,
-      beatCount: beatCount
+      beatCount: beatCount,
+      mouseDown: false
     };
     this.updateTimeSignature = this.updateTimeSignature.bind(this);
     this.updateBPM = this.updateBPM.bind(this);
@@ -171,13 +172,19 @@ class App extends React.Component {
           running={this.state.running}
           updateStatus={this.updateStatus}
           beatCount={this.state.beatCount}
-          updateBeatCount={this.updateBeatCount} />
-        <Builder
-          beatData={this.state.beatData}
-          beatCount={this.state.beatCount}
-          fractionTop={this.state.fractionTop}
-          updateBeatData={this.updateBeatData}
+          updateBeatCount={this.updateBeatCount}
         />
+        <div
+          onMouseDown={(e) => { console.log("DOWN"); this.setState({ mouseDown: true }); e.preventDefault(); }}
+          onMouseUp={(e) => { console.log("UP"); this.setState({ mouseDown: false }); e.preventDefault(); }}>
+          <Builder
+            beatData={this.state.beatData}
+            beatCount={this.state.beatCount}
+            fractionTop={this.state.fractionTop}
+            updateBeatData={this.updateBeatData}
+            mouseDown={this.state.mouseDown}
+          />
+        </div>
       </div>
     );
   }
